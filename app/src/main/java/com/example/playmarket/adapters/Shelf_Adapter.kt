@@ -1,28 +1,34 @@
 package com.example.playmarket.adapters
 
-import android.app.Application
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.playmarket.AppData
 import com.example.playmarket.ApplicationData
 import com.example.playmarket.R
-import com.example.playmarket.databinding.EducationAppBinding
+import com.example.playmarket.databinding.ItemCardBinding
 
-class Application_Adapter(
-    var appAdapter: ArrayList<ApplicationData>
-):RecyclerView.Adapter<Application_Adapter.AppViewHolder>() {
+
+class Shelf_Adapter(
+    var appAdapter: ArrayList<AppData>
+
+):RecyclerView.Adapter<Shelf_Adapter.AppViewHolder>() {
         inner class AppViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-            var binding = EducationAppBinding.bind(itemView)
+            var binding = ItemCardBinding.bind(itemView)
 
-            fun onBind(item: ApplicationData) {
-                binding.appName.text = item.name
-                binding.appImage.setImageResource(item.image)
+            fun onBind(data: AppData) {
+
+                binding.appName.text = data.name
+                binding.appImage.setImageResource(data.image)
+
+
+
             }
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.education_app,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card,parent,false)
         return AppViewHolder(view)
     }
 
