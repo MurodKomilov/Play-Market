@@ -2,6 +2,8 @@ package com.example.playmarket
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.playmarket.adapters.ClickListener
 import com.example.playmarket.adapters.MainAdapter
 import com.example.playmarket.adapters.Shelf_Adapter
 import com.example.playmarket.databinding.ActivityMainBinding
@@ -21,7 +23,13 @@ class MainActivity : AppCompatActivity() {
         addData()
 
 
-        binding.mainRv.adapter = MainAdapter(appList)
+
+        binding.mainRv.adapter = MainAdapter(appList, object :ClickListener{
+            override fun onClickItem(item: AppData) {
+                Toast.makeText(this@MainActivity, item.name, Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
 
@@ -30,24 +38,25 @@ class MainActivity : AppCompatActivity() {
     private fun addData() {
 
 
-        appList1.add(AppData("Aron",R.drawable.aron))
-        appList1.add(AppData("Main",R.drawable.main))
-        appList1.add(AppData("Aron",R.drawable.aron))
-        appList1.add(AppData("Aron",R.drawable.aron))
-        appList1.add(AppData("Aron",R.drawable.aron))
-        appList.add(ApplicationData("Murod", appList1,))
-        appList.add(ApplicationData("Komilov", appList1,))
-        appList.add(ApplicationData("Charos", appList1,))
-        appList.add(ApplicationData("Mohinur", appList1,))
-        appList.add(ApplicationData("Murod", appList1,))
-        appList.add(ApplicationData("Murod", appList1,))
+        appList1.add(AppData("Instagram", R.drawable.instagram))
+        appList1.add(AppData("LinkedIn", R.drawable.images))
+        appList1.add(AppData("Instagram", R.drawable.instagram))
+        appList1.add(AppData("LinkedIn", R.drawable.images))
+        appList1.add(AppData("Instagram", R.drawable.instagram))
+        appList1.add(AppData("LinkedIn", R.drawable.images))
+
+
+        appList.add(ApplicationData("Apps", appList1,))
+        appList.add(ApplicationData("Games", appList1,))
+        appList.add(ApplicationData("Music", appList1,))
+        appList.add(ApplicationData("Vide Edit", appList1,))
+        appList.add(ApplicationData("Video Editor", appList1,))
+        appList.add(ApplicationData("Apps", appList1,))
+        appList.add(ApplicationData("Games", appList1,))
 
 
 
-//        appList.add(ApplicationData("Aron",R.drawable.aron))
-//        appList.add(ApplicationData("Aron2",R.drawable.aron2))
-//        appList.add(ApplicationData("Slashio",R.drawable.slashio))
-//        appList.add(ApplicationData("Ting",R.drawable.ting))
+
 
 
     }

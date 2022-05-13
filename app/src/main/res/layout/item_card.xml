@@ -19,7 +19,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/main"/>
+            android:src="@drawable/images"/>
 
     </androidx.cardview.widget.CardView>
 

@@ -11,6 +11,7 @@ import com.example.playmarket.databinding.ShelfBinding
 
 class MainAdapter(
     var sectionList:ArrayList<ApplicationData>,
+    var clickListener: ClickListener
 ):RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     inner class MainViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -19,8 +20,9 @@ class MainAdapter(
         fun onBind(data:ApplicationData){
 
                 binding.eduApp.text = data.shelf
-                val shelfAdapter = Shelf_Adapter(data.app)
+                val shelfAdapter = Shelf_Adapter(data.app,clickListener)
                 binding.shelf.adapter = shelfAdapter
+
 
 
         }
@@ -37,3 +39,4 @@ class MainAdapter(
 
     override fun getItemCount(): Int = sectionList.size
 }
+

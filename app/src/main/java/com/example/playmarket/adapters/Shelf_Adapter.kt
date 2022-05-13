@@ -3,16 +3,18 @@ package com.example.playmarket.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.playmarket.AppData
 import com.example.playmarket.ApplicationData
+import com.example.playmarket.MainActivity
 import com.example.playmarket.R
 import com.example.playmarket.databinding.ItemCardBinding
 
 
 class Shelf_Adapter(
-    var appAdapter: ArrayList<AppData>
-
+    var appAdapter: ArrayList<AppData>,
+    var clickListener: ClickListener
 ):RecyclerView.Adapter<Shelf_Adapter.AppViewHolder>() {
         inner class AppViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
             var binding = ItemCardBinding.bind(itemView)
@@ -21,6 +23,10 @@ class Shelf_Adapter(
 
                 binding.appName.text = data.name
                 binding.appImage.setImageResource(data.image)
+
+                binding.root.setOnClickListener {
+                    clickListener.onClickItem(data)
+                }
 
 
 
@@ -37,4 +43,8 @@ class Shelf_Adapter(
     }
 
     override fun getItemCount(): Int = appAdapter.size
+}
+
+interface ClickListener{
+    fun onClickItem(item:AppData)
 }
